@@ -1,3 +1,3 @@
 
-msg = "hello world"
+msg = "\nhello world"
 print(msg.capitalize())
