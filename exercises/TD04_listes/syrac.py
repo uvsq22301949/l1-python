@@ -67,12 +67,15 @@ print(plus_grand_temps_de_vol(10000))
 
 
 def plus_grand_nb(n_max):
-    plus_grand_nb_atteint=[]
+    plus_grand_nb_atteint=[1]
+    plus_grand_entier=[]
+    compteur=0
     for i in range(1,n_max):
-        
+    
         while i!=1:
             if i>max(plus_grand_nb_atteint):
                 plus_grand_nb_atteint.append(i)
+                plus_grand_entier.append(compteur)
 
             if i%2==0:
                
@@ -80,8 +83,9 @@ def plus_grand_nb(n_max):
             else:
 
                 i=3*i+1
+        compteur+=1
     plus_grand=max(plus_grand_nb_atteint)
 
-    return plus_grand
+    return plus_grand,max(plus_grand_entier)+1
 
 print(plus_grand_nb(10000))
