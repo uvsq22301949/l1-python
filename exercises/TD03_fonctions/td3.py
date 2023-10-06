@@ -55,28 +55,28 @@ def demandeTemps():
 
     j=int(input("jour: "))
 
-    while 0>j or j>31:
+    while 0>j :
         j=int(input("jour: "))
 
     h=int(input("heure: "))
 
-    while 0>h or h>24:
+    while 0>h or h>=24:
         h=int(input("heure: "))
 
     m=int(input("min: "))
 
-    while 0>m or m>60:
+    while 0>m or m>=60:
         m=int(input("min: "))
 
     s=int(input("seconde: "))
 
-    while 0>s or s>60:
+    while 0>s or s>=60:
         s=int(input("seconde: "))
 
 
     return (j,h,m,s)
 
-#afficheTemps(demandeTemps())
+afficheTemps(demandeTemps())
 
 
 
