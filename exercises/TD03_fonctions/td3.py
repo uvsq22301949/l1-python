@@ -76,7 +76,7 @@ def demandeTemps():
 
     return (j,h,m,s)
 
-afficheTemps(demandeTemps())
+#afficheTemps(demandeTemps())
 
 
 
@@ -109,17 +109,15 @@ afficheTemps(proportionTemps(proportion=0.2,temps=(2,0,36,0)))
 
 def tempsEnDate(temps):
     date_0=(1970,0,1,0,0,0)
-    date= temps[0]//365,(temps[0]%365)//31,temps[0]%365,temps[1],temps[2],temps[3]
-    jour_mois=(31,28,31,30,31,30,31,31,30,31,31,30,31)
-
     
-    a=date[0]+date_0[0]
-    m=date[1]+date_0[1]
-    j=date[2]+date_0[2]
-    h=date[3]+date_0[3]
-    min=date[4]+date_0[4]
-    s=date[5]+date_0[5]
+    date= temps[0]//365,(temps[0]%365)//31,temps[0]%365,temps[1],temps[2],temps[3]
+    jour_mois=(31,28,31,30,31,30,31,31,30,31,30,31)
 
+    a,_,j,h,min,s=date
+    m=0
+    #print(m)
+    a+=date_0[0]
+    #print(j)
     if s>60:
         h+=1
         s=s%60
@@ -132,17 +130,20 @@ def tempsEnDate(temps):
         j+=1
         h=h%24
 
-    if j>31:
+    while jour_mois[m]<j:
+        #print(j)
+        j=j-jour_mois[m]
+        #print(j)
         m+=1
-        j=j%31
+        if m>11:
+            a+=1
+            m=0
 
     if m>12:
         a+=1
         m=m%12
 
-    if jour_mois[m]<j:
-        j=j%jour_mois[m]
-        m+=1
+    
 
     date=a,m,j,h,min,s
     return date
@@ -158,6 +159,7 @@ temps = secondeEnTemps(1000000000)
 afficheTemps(temps)
 print(tempsEnDate(temps))
 afficheDate(tempsEnDate(temps))
+afficheDate()
 
 
 def bisextile(jour):
@@ -196,19 +198,21 @@ def nombreBisextile(jour):
 def tempsEnDateBisextile(temps):
 
     date_0=(1970,0,1,0,0,0)
-    
-    new_temps=temps[0]-nombreBisextile(temps[0])*366
+    jour_mois=(31,28,31,30,31,30,31,31,30,31,30,31)
 
+   
+    
+    new_temps=temps[0]-nombreBisextile(temps[0])
+    #new_temps=temps[0]
     date= new_temps//365,(new_temps%365)//31,new_temps%365,temps[1],temps[2],temps[3]
 
 
     
-    a=date[0]+date_0[0]
-    m=date[1]+date_0[1]
-    j=date[2]+date_0[2]
-    h=date[3]+date_0[3]
-    min=date[4]+date_0[4]
-    s=date[5]+date_0[5]
+    a,_,j,h,min,s=date
+    m=0
+    #print(m)
+    a+=date_0[0]
+    #print(j)
 
     if s>60:
         h+=1
@@ -222,11 +226,16 @@ def tempsEnDateBisextile(temps):
         j+=1
         h=h%24
 
-    if j>31:
+    while jour_mois[m]<j:
+        #print(j)
+        j=j-jour_mois[m]
+        #print(j)
         m+=1
-        j=j%31
-
-    if m>12:
+        if m>11:
+            a+=1
+            m=0
+            
+    if m>11:
         a+=1
         m=m%12
 
@@ -250,7 +259,7 @@ def verifie(liste_temps):
     seconde_des_semaines=0
     for i in range(len(liste_temps)):
         if tempsEnSeconde(liste_temps[i])<48*3600:
-            print(f"semaine {i} ok")
+            print(f"semaine {i+1} ok")
 
     for j in range(len(liste_temps)):
         seconde_des_semaines+=tempsEnSeconde(liste_temps[j])
