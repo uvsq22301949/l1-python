@@ -110,7 +110,7 @@ afficheTemps(proportionTemps(proportion=0.2,temps=(2,0,36,0)))
 def tempsEnDate(temps):
     date_0=(1970,0,1,0,0,0)
     date= temps[0]//365,(temps[0]%365)//31,temps[0]%365,temps[1],temps[2],temps[3]
-
+    jour_mois=(31,28,31,30,31,30,31,31,30,31,31,30,31)
 
     
     a=date[0]+date_0[0]
@@ -140,14 +140,18 @@ def tempsEnDate(temps):
         a+=1
         m=m%12
 
+    if jour_mois[m]<j:
+        j=j%jour_mois[m]
+        m+=1
 
     date=a,m,j,h,min,s
     return date
 
 
-def afficheDate(date):
+def afficheDate(date=(1970,0,1,0,0,0)):
     #print(date)
-    print(date[0],"années",date[1],"mois",date[2],"jour",date[3],"heure",date[4],"min",date[5],"sec")
+    mois=('janvier','février','mars','avril','mai','juin','juillet','aout','septembre','octobre','novembre','décembre')
+    print(date[2],mois[date[1]],date[0],date[3],":",date[4],":",date[5])
 
     
 temps = secondeEnTemps(1000000000)
