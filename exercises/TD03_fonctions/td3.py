@@ -260,12 +260,16 @@ def verifie(liste_temps):
     for i in range(len(liste_temps)):
         if tempsEnSeconde(liste_temps[i])<48*3600:
             print(f"semaine {i+1} ok")
-
+        else:
+            print(f"semaine {i+1} pas ok")
+            
     for j in range(len(liste_temps)):
         seconde_des_semaines+=tempsEnSeconde(liste_temps[j])
     if seconde_des_semaines<140*3600:
         print("mois ok")
-
+    else:
+        print(f"semaine {i+1} pas ok")
 
 liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
 verifie(liste_temps)
+afficheDate()
