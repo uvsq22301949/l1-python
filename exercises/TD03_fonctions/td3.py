@@ -270,6 +270,26 @@ def verifie(liste_temps):
     else:
         print(f"semaine {i+1} pas ok")
 
+def verifie_2(liste_temps_mois):
+
+    seconde_des_semaines=0
+    for i in range(len(liste_temps_mois)):
+        for k in range(len(liste_temps_mois[i])):
+            if tempsEnSeconde(liste_temps_mois[i][k])<48*3600:
+                print(f"semaine {i+1} ok")
+            else:
+                print(f"semaine {i+1} pas ok")
+            
+    for j in range(len(liste_temps_mois)):
+        for l in range(len(liste_temps_mois[j])):
+            seconde_des_semaines+=tempsEnSeconde(liste_temps_mois[j][l])
+    if seconde_des_semaines<140*3600:
+        print("mois ok")
+    else:
+        print(f"mois pas ok")
+
 liste_temps = [[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]]
+liste_temps_mois = [[[1,2,39,34],[0,1,9,4],[0,29,39,51],[0,31,13,46]],[[1,2,39,34],[3,1,9,4],[5,29,39,51],[4,31,13,46]]]
 verifie(liste_temps)
+verifie_2(liste_temps_mois)
 afficheDate()
