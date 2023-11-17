@@ -49,6 +49,7 @@ def testColonnesEgales(carre):
     return egal
 
 
+
 def testDiagonalesEgales(carre):
     """ Renvoie la somme des éléments d'une diagonale de la liste 2D carre si les 2 diagonales ont la même somme, et -1 sinon """
     egal=True
@@ -94,11 +95,9 @@ def estNormal(carre):
 
                 
 
-    
+ 
 
 
-    
-    return normal
 
 carre_mag=[[4,14,15,1],[9,7,6,12],[5,11,10,8],[16,2,3,13]]
 carre_non_mag=[[4,14,15,1],[9,7,6,12],[5,11,10,8],[16,2,7,13]]
